@@ -3,7 +3,6 @@ certifi
 chardet
 colorama
 cryptography
-cupshelpers
 dbus-python
 defer
 distro
