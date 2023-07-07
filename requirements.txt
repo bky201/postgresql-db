@@ -6,7 +6,6 @@ cryptography
 defer
 distro
 distro-info
-duplicity
 fasteners
 flask-sqlalchemy
 future
