@@ -2,7 +2,6 @@ bcrypt
 certifi
 chardet
 colorama
-command-not-found
 cryptography
 cupshelpers
 dbus-python
