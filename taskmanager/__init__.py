@@ -1,7 +1,7 @@
 import os
 from flask import Flask
-
 from flask_sqlalchemy import SQLAlchemy
+
 if os.path.exists("env.py"):
     import env  # noqa
 
@@ -14,15 +14,16 @@ if os.environ.get("DEVELOPMENT") == "True":
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
 else:
     uri = os.environ.get("DATABASE_URL")
-    if uri.startswith("postgres://"):
+    if uri and uri.startswith("postgres://"):
         uri = uri.replace("postgres://", "postgresql://", 1)
     app.config["SQLALCHEMY_DATABASE_URI"] = uri
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(app)
+
+from taskmanager import routes  # noqa
 
 # Create the Flask application context
 with app.app_context():
-    # Execute operations within the application context
+    # Create the database tables
     db.create_all()
-
-from taskmanager import routes  # noqa
