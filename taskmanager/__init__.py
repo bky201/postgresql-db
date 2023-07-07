@@ -23,8 +23,7 @@ db = SQLAlchemy(app)
 
 from taskmanager import routes  # noqa
 
-# Bind the SQLAlchemy instance to the application context
+# Create the Flask application context
 with app.app_context():
     # Create the database tables
-    db.init_app(app)
     db.create_all()
