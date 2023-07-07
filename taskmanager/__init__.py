@@ -20,4 +20,9 @@ else:
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+# Create the Flask application context
+with app.app_context():
+    # Execute operations within the application context
+    db.create_all()
+
 from taskmanager import routes  # noqa
